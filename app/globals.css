@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #09090B;
+  --surface: #111113;
+  --border: #27272A;
+  --text-primary: #FAFAFA;
+  --text-muted: #71717A;
+  --accent: #FFFFFF;
+  --danger: #EF4444;
+  --success: #22C55E;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-muted: var(--text-muted);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+body {
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(255,255,255,0.15);
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}

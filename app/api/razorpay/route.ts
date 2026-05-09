@@ -3,15 +3,18 @@ import Razorpay from "razorpay";
 
 export const runtime = "nodejs";
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
+// Lazy init — env vars not available at build-time static analysis
+function getRazorpay() {
+  return new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID!,
+    key_secret: process.env.RAZORPAY_KEY_SECRET!,
+  });
+}
 
 export async function POST() {
   try {
-    const order = await razorpay.orders.create({
-      amount: 4900, // ₹49 in paise
+    const order = await getRazorpay().orders.create({
+      amount: 4900,
       currency: "INR",
       receipt: `vani_${Date.now()}`,
       notes: {
